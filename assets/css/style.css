@@ -1,0 +1,21 @@
+h1 {
+    font-size: 250%;
+    text-align: center;
+    padding: 2rem;
+}
+
+
+button {
+    display: flex;
+    justify-content: center;
+    
+}
+header {
+    text-align: center;
+}
+.timer-count {
+    text-align: right;
+    font-size: 200%;
+    font-weight: bold;
+    padding: 2rem;
+}

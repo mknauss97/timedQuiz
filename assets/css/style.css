@@ -3,19 +3,36 @@ h1 {
     text-align: center;
     padding: 2rem;
 }
+main {
+    text-align: left;
+}
 
-
-button {
-    display: flex;
-    justify-content: center;
+.start-button {
+    display: inline-block
     
 }
 header {
     text-align: center;
 }
-.timer-count {
+#timer-count {
     text-align: right;
     font-size: 200%;
     font-weight: bold;
     padding: 2rem;
+}
+
+.answer, h3 {
+    display: inline;
+}
+.answer {
+    height: 2rem;
+    width: 2rem;
+}
+button {
+    display: inline
+}
+.home-screen {
+    margin: 12rem;
+    width: 50%;
+    /* padding: 10rem; */
 }

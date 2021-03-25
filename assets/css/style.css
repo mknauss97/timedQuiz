@@ -14,7 +14,7 @@ main {
 header {
     text-align: center;
 }
-#timer-count {
+.timer-count {
     text-align: right;
     font-size: 200%;
     font-weight: bold;
@@ -29,10 +29,21 @@ header {
     width: 2rem;
 }
 button {
-    display: inline
+    display: block;
+    font-size: 24px;
+    width: 250px;
+    margin: 0 auto;
 }
-.home-screen {
+#home-screen {
     margin: 12rem;
     width: 50%;
     /* padding: 10rem; */
+}
+#quiz-card {
+    height: 100%;
+    width: 100%;
+}
+#response {
+    text-align: center;
+    font-size: 25px;
 }

@@ -47,3 +47,11 @@ button {
     text-align: center;
     font-size: 25px;
 }
+.highScore {
+    font-size: 20px;
+   margin-top: 25px;
+}
+#game-Over {
+    height: 100%;
+    width: 100%;
+}

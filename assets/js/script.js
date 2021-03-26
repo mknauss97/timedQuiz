@@ -25,20 +25,23 @@ var questions = [
     correctAnswer: 3
   }
 ]
-var timerElement = document.querySelector('.timer-count')
-var startButton = document.querySelector('.start-button')
-var questionH = document.querySelector('.questionCurrent')
-var buttonPlacement = document.querySelector('#butts')
-var highscores = document.querySelector('#scores')
-var timerCount =75
-var scoreCount;
+var timerElement = document.querySelector('.timer-count');
+var startButton = document.querySelector('.start-button');
+var questionH = document.querySelector('.questionCurrent');
+var buttonPlacement = document.querySelector('#butts');
+var highscores = document.querySelector('#scores');
+var timerCount =75;
+var scoreCount = 0;
+var playerArray;
 var currentQuestion = [];
-var response = document.querySelector('#response')
-var buttonEl1 = document.querySelector('#button1')
-var buttonEl2 = document.querySelector('#button2')
-var buttonEl3 = document.querySelector('#button3')
-var buttonEl4 = document.querySelector('#button4')
+var response = document.querySelector('#response');
+var buttonEl1 = document.querySelector('#button1');
+var buttonEl2 = document.querySelector('#button2');
+var buttonEl3 = document.querySelector('#button3');
+var buttonEl4 = document.querySelector('#button4');
 var buttonArray =[];
+var initalCollect = document.querySelector('#gameOver')
+var finalScore = document.querySelector('#finalScore')
 buttonArray.push(buttonEl1)
 buttonArray.push(buttonEl2)
 buttonArray.push(buttonEl3)
@@ -55,15 +58,12 @@ function startTimer() {
     console.log(timerCount)
     timerElement.textContent = timerCount;
     
-    // if (condition) {
-      
-    // }
     
     // Tests if time has run out
     if (timerCount === 0) {
       // Clears interval
       clearInterval(timer);
-      endGame();
+      collectInitials();
 
     }
   }, 1000);
@@ -74,27 +74,21 @@ var finalQuestion = questions.length - 1;
 var currentQuestion = 0
 var correct = ("");
 console.log(currentQuestion)
-console.log(finalQuestion)
+console.log(buttonArray)
 function askQuestions() {
   // var askTitle = document.createElement('h1');
    questionH.textContent = questions[currentQuestion].title;
   //  questionH.append(askTitle);
  
-  for (var i = 0; i < questions.length; i++) {
+  for (var i = 0; i < buttonArray.length; i++) {
    buttonArray[i].textContent=questions[currentQuestion].choices[i];
-
-
-    // var choices = document.createElement('button');
-    // choices[i].textContent = questions[currentQuestion].choices[i];
-    // correct = questions.correctAnswer
-    // buttonPlacement.appendChild(choices)
+    console.log("iteration " + i )
   }
 };
 
 function checkAnswer(answer) {
   if (answer===questions[currentQuestion].correctAnswer) {
     response.textContent = "Correct"
-    scoreCount += 5;
   }
   else {
     response.textContent = "Incorrect"
@@ -107,8 +101,9 @@ function checkAnswer(answer) {
   }
   else {
     clearInterval(timer)
+    collectInitials();
   }
-
+  
 }
 buttonEl1.addEventListener("click",function(){
   checkAnswer(0)
@@ -122,10 +117,25 @@ buttonEl3.addEventListener("click",function(){
 buttonEl4.addEventListener("click",function(){
   checkAnswer(3)
 })
-console.log(scoreCount)
-function endGame() {
+console.log(timerCount)
+function collectInitials() {
+  finalScore.textContent = "Your Final Score is: " + timerCount;
   document.getElementById('quiz-card').style.display = 'none';
-  document.getElementById('scores').style.display = 'inline-block';
+  document.getElementById('gameOver').style.display = 'inline-block';
 }
+
+function highNoon(event) {
+  event.prevenDefault();
+
+  var playerData = {
+    score: timerCount,
+    initials: document.getElementById("form-input").value
+  }
+  playerArray.push(playerData);
+  window.localStorage.setItem("")
+  window.localStorage.setItem("result", JSON.stringify(playerData));
+  window.location.href = "scores.html";
+}
+
 
 startButton.addEventListener("click", startTimer);

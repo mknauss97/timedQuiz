@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>highScores</title>
+</head>
+<body>
+    <card id="highscore-page" style="display:none;">
+        <table id = "tableScores">
+            <tr>
+                <th>Score</th>
+                <th>Initials</th>
+            </tr>
+        </table>
+    </card>
+    <button id = "quiz-back">Restart quiz</button>
+    <button id="clear">Clear Scores</button>
+
+    <script>
+        var finishedProduct = JSON.parse(localStorage.getItem("result"));
+
+        document.getElementById("quiz-back").addEventListener("click", toQuiz);
+
+        function toQuiz(event) {
+            event.prevenDefault();
+            window.location.href = "index.html";
+        }
+
+        document.getElementById("clear").addEventListener("click", clearScore);
+
+        function clearScore(event) {
+            event.prevenDefault();
+            localStorage.clear();
+            window.location.href = "scores.html";
+        }
+        finishedProduct.forEach(element => {
+            var row = document.createElement("tr");
+            document.getElementById("tableScores").append(row);
+            var column1 = document.createElement("td");
+            var column2 = document.createElement("td");
+            row.append(column1);
+            row.append(column2);
+            column1.textContent = element.score;
+            column2.textContent = element. initials;
+        });
+        
+    </script>
+</body>
+</html>
